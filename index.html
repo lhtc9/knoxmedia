@@ -153,9 +153,29 @@ header {
 
 /* PRICE */
 .price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* giá mới */
+.price .new {
   color: #ff6a00;
+  font-size: 18px;
   font-weight: bold;
-  margin: 5px 0;
+}
+
+/* giá cũ */
+.price .old {
+  color: #999;
+  font-size: 13px;
+  text-decoration: line-through;
+}
+
+/* BUTTON GROUP */
+.btn-group {
+  display: flex;
+  gap: 5px;
 }
 
 /* BUTTON GROUP */
@@ -277,6 +297,7 @@ const products = [
   {
     name: "Tai nghe gaming RGB siêu chất",
     price: "199.000đ",
+    oldPrice: "299.000đ",
     img: "https://www.pinterest.com/pin/42362052737318107/feedback/?invite_code=a93331697a9d42e784d06750d53e0715&sender_id=950259727533917606",
     linkTikTok: "LINK_TIKTOK",
     category: "gaming",
@@ -401,8 +422,10 @@ function render(list) {
       <img src="${p.img}">
       <div class="info">
         <div class="title">${p.name}</div>
-        <div class="price">${p.price}</div>
-
+        <div class="price">
+  <span class="new">${p.price}</span>
+  ${p.oldPrice ? `<span class="old">${p.oldPrice}</span>` : ""}
+</div>
         <div class="btn-group">
           <a href="${p.linkTikTok}" target="_blank" class="btn tiktok">Mua ngay</a>
         </div>
