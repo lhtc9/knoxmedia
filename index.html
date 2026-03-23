@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Gợi Ý</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  background: #f5f5f5;
+}
+
+/* HEADER */
+header {
+  background: #ff6a00;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+}
+
+.search-box {
+  background: white;
+  border-radius: 20px;
+  padding: 10px 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* BANNER */
+.banner {
+  height: 160px;
+  background: linear-gradient(135deg, #ff6a00, #ff9a00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.banner-content h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.banner-content p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+/* NÚT */
+.banner-btn {
+  display: inline-block;
+  background: white;
+  color: #ff6a00;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.banner-btn:hover {
+  background: #ffe0cc;
+}
+
+/* CATEGORY */
+.category {
+  display: flex;
+  overflow-x: auto;
+  background: white;
+  padding: 10px;
+  gap: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.cat-item {
+  padding: 6px 12px;
+  background: #fff3e6;
+  border-radius: 15px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.cat-item:hover {
+  background: #ffe0cc;
+}
+
+/* PRODUCT GRID */
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* BADGE */
+.badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: #ff3b30;
+  color: white;
+  font-size: 10px;
+  padding: 3px 5px;
+  border-radius: 5px;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* INFO */
+.info {
+  padding: 8px;
+}
+
+.title {
+  font-size: 13px;
+  height: 34px;
+  overflow: hidden;
+  color: #333;
+}
+
+/* PRICE */
+.price {
+  color: #ff6a00;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+/* BUTTON GROUP */
+.btn-group {
+  display: flex;
+  gap: 5px;
+}
+
+/* BUTTON */
+.btn {
+  flex: 1;
+  text-align: center;
+  padding: 6px;
+  font-size: 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.tiktok {
+  background: linear-gradient(135deg, #ff6a00, #ff9a00);
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(255,106,0,0.3);
+}
+
+/* HOVER */
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* PRODUCT GRID */
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* mặc định mobile */
+  gap: 10px;
+  padding: 10px;
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Laptop */
+@media (min-width: 992px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Màn hình lớn */
+@media (min-width: 1200px) {
+  .container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff6a00;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
+  cursor: pointer;
+  display:block;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+#backToTop:hover {
+  background: #e65c00;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <div class="search-box">
+    <input type="text" placeholder="Tìm sản phẩm..." onkeyup="searchProduct(this.value)">
+  </div>
+</header>
+
+<div class="banner">
+  <div class="banner-content">
+    <h2>🔥 Deal hot hôm nay</h2>
+    <p>Săn sale cực sốc – số lượng có hạn!</p>
+    <a href="shop.html" class="banner-btn">Mua ngay</a>
+  </div>
+</div>
+
+<div class="category">
+  <div class="cat-item" onclick="filter('all')">Tất cả</div>
+  <div class="cat-item" onclick="filter('ao')">Áo</div>
+  <div class="cat-item" onclick="filter('quan')">Quần</div>
+  <div class="cat-item" onclick="filter('gd')">Giày dép</div>
+  <div class="cat-item" onclick="filter('pk')">Phụ kiện</div>
+  <div class="cat-item" onclick="filter('gaming')">Gaming</div>
+  <div class="cat-item" onclick="filter('decor')">Decor</div>
+</div>
+
+<div class="container" id="productList"></div>
+
+<script>
+const products = [
+  {
+    name: "Tai nghe gaming RGB siêu chất",
+    price: "199.000đ",
+    img: "https://www.pinterest.com/pin/42362052737318107/feedback/?invite_code=a93331697a9d42e784d06750d53e0715&sender_id=950259727533917606",
+    linkTikTok: "LINK_TIKTOK",
+    category: "gaming",
+    hot: true
+  },
+  {
+    name: "Áo vest nam chụp kỉ yếu học sinh, đen thanh lịch",
+    price: "89.000đ",
+    img: "https://i.pinimg.com/736x/b2/29/e7/b229e716a363f31927d2408e0856fdd4.jpg",
+    linkTikTok: "https://vn.shp.ee/pGtbKdG4",
+    category: "ao",
+    hot: false
+  },
+  {
+    name: "Tai nghe gaming RGB siêu chất",
+    price: "199.000đ",
+    img: "https://www.pinterest.com/pin/42362052737318107/feedback/?invite_code=a93331697a9d42e784d06750d53e0715&sender_id=950259727533917606",
+    linkTikTok: "LINK_TIKTOK",
+    category: "gaming",
+    hot: true
+  },
+  {
+    name: "Đèn LED decor chill sáng rực cả căn phòng",
+    price: "89.000đ",
+    img: "https://i.pinimg.com/736x/b2/29/e7/b229e716a363f31927d2408e0856fdd4.jpg",
+    linkTikTok: "LINK_TIKTOK",
+    category: "pk",
+    hot: false
+  },
+  {
+    name: "Áo vest nam chụp kỉ yếu học sinh, đen thanh lịch",
+    price: "89.000đ",
+    img: "https://i.pinimg.com/736x/b2/29/e7/b229e716a363f31927d2408e0856fdd4.jpg",
+    linkTikTok: "https://vn.shp.ee/pGtbKdG4",
+    category: "quan",
+    hot: false
+  },
+  {
+    name: "Đèn LED decor chill sáng rực cả căn phòng",
+    price: "89.000đ",
+    img: "https://i.pinimg.com/736x/b2/29/e7/b229e716a363f31927d2408e0856fdd4.jpg",
+    linkTikTok: "LINK_TIKTOK",
+    category: "gd",
+    hot: false
+  },
+  {
+    name: "Áo vest nam chụp kỉ yếu học sinh, đen thanh lịch",
+    price: "89.000đ",
+    img: "https://i.pinimg.com/736x/b2/29/e7/b229e716a363f31927d2408e0856fdd4.jpg",
+    linkTikTok: "https://vn.shp.ee/pGtbKdG4",
+    category: "decor",
+    hot: false
+  }
+];
+
+const container = document.getElementById("productList");
+
+function render(list) {
+  container.innerHTML = "";
+  list.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      ${p.hot ? '<div class="badge">HOT</div>' : ''}
+      <img src="${p.img}">
+      <div class="info">
+        <div class="title">${p.name}</div>
+        <div class="price">${p.price}</div>
+
+        <div class="btn-group">
+          <a href="${p.linkTikTok}" target="_blank" class="btn tiktok">Mua ngay</a>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function filter(cat) {
+  if (cat === "all") return render(products);
+  render(products.filter(p => p.category === cat));
+}
+
+function searchProduct(keyword) {
+  const result = products.filter(p =>
+    p.name.toLowerCase().includes(keyword.toLowerCase())
+  );
+  render(result);
+}
+
+render(products);
+const btn = document.getElementById("backToTop");
+
+// hiện nút khi scroll xuống
+window.onscroll = function () {
+  if (document.documentElement.scrollTop > 200) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+// click → lên đầu trang
+btn.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+};
+</script>
+<button id="backToTop">⬆</button>
+</body>
+</html>
